@@ -715,6 +715,7 @@
             <button class="tab" onclick="showTab('class-levels')">Class Levels</button>
             <button class="tab" onclick="showTab('timeslot')">Timeslot Analysis</button>
             <button class="tab" onclick="showTab('previous-semesters')">Previous Semesters</button>
+            <button class="tab" onclick="showTab('course-synergy')">Course Synergy</button>
         </div>
 
         <!-- Overview Tab -->
@@ -3528,6 +3529,68 @@
         </div>
     </div>
 
+    <!-- Course Synergy Tab -->
+    <div id="course-synergy" class="tab-content">
+        <h2>🔄 Course Synergy Analysis</h2>
+        <p style="color: #b8b8d1; margin-bottom: 30px;">
+            Discover which course combinations enhance or hinder student performance. Based on <strong>REAL DATA</strong> from Spring 2024-2025 
+            semester analyzing 4,386 SoEN students taking multiple courses. Total of 386 course pairs analyzed with at least 15 students each.
+        </p>
+        
+        <!-- Synergy Explanation -->
+        <div class="card" style="background: rgba(102, 126, 234, 0.1); padding: 25px; margin-bottom: 30px;">
+            <h3 style="color: #667eea; margin-bottom: 15px;">📊 What is Course Synergy?</h3>
+            <p style="line-height: 1.8; margin-bottom: 15px;">
+                Course Synergy Score measures whether students perform better or worse when taking certain courses together 
+                compared to taking them separately. A <span style="color: #4caf50; font-weight: bold;">positive synergy</span> 
+                means the combination enhances performance, while a <span style="color: #ff6b6b; font-weight: bold;">negative synergy</span> 
+                indicates the combination creates challenges.
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+                <div style="text-align: center; padding: 15px; background: rgba(76, 175, 80, 0.1); border-radius: 10px;">
+                    <div style="font-size: 2em;">🎯</div>
+                    <strong>Positive Synergy</strong>
+                    <div style="font-size: 0.9em; color: #b8b8d1; margin-top: 5px;">
+                        Skills reinforce each other<br>Balanced workload distribution
+                    </div>
+                </div>
+                <div style="text-align: center; padding: 15px; background: rgba(255, 107, 107, 0.1); border-radius: 10px;">
+                    <div style="font-size: 2em;">⚠️</div>
+                    <strong>Negative Synergy</strong>
+                    <div style="font-size: 0.9em; color: #b8b8d1; margin-top: 5px;">
+                        Overlapping heavy workloads<br>Conflicting deadlines/concepts
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Positive Synergies -->
+        <div class="card" style="margin-bottom: 30px;">
+            <h3 style="color: #4caf50; margin-bottom: 20px;">✅ Recommended Course Combinations</h3>
+            <p style="color: #b8b8d1; margin-bottom: 20px;">These course pairs show positive synergy - students typically perform better when taking them together.</p>
+            <div id="positive-synergies" style="display: grid; gap: 15px;">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+        
+        <!-- Negative Synergies -->
+        <div class="card">
+            <h3 style="color: #ff6b6b; margin-bottom: 20px;">❌ Challenging Course Combinations</h3>
+            <p style="color: #b8b8d1; margin-bottom: 20px;">These course pairs show negative synergy - students typically struggle when taking them together.</p>
+            <div id="negative-synergies" style="display: grid; gap: 15px;">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+        
+        <!-- Synergy Visualization -->
+        <div class="card" style="margin-top: 30px;">
+            <h3 style="color: #667eea; margin-bottom: 20px;">📈 Synergy Score Distribution</h3>
+            <div style="position: relative; height: 300px;">
+                <canvas id="synergyChart"></canvas>
+            </div>
+        </div>
+    </div>
+
     <script>
         // SoAS courses data
         const soasCoursesData = {
@@ -4311,6 +4374,182 @@
                     setTimeout(() => {
                         if (!performanceChart) {
                             initializePerformanceChart();
+                        }
+                    }, 100);
+                });
+            }
+        });
+        
+        // Course Synergy Data - REAL DATA from Spring 2024-2025
+        const courseSynergyData = {
+            positive: [
+                {course1: 'ARAB200', course2: 'ENGG450', synergy_score: 25.9, students: 15, actual_gpa: 3.23, expected_gpa: 2.566},
+                {course1: 'EENG435', course2: 'MENG360', synergy_score: 25.6, students: 15, actual_gpa: 3.09, expected_gpa: 2.461},
+                {course1: 'CENG325', course2: 'MATH310', synergy_score: 22.6, students: 32, actual_gpa: 3.225, expected_gpa: 2.63},
+                {course1: 'EENG388', course2: 'ENGG300', synergy_score: 22.2, students: 19, actual_gpa: 2.963, expected_gpa: 2.425},
+                {course1: 'ARAB200', course2: 'CENG380', synergy_score: 21.6, students: 24, actual_gpa: 3.235, expected_gpa: 2.66},
+                {course1: 'ARAB200', course2: 'CENG375', synergy_score: 20.9, students: 20, actual_gpa: 3.022, expected_gpa: 2.5},
+                {course1: 'CULT200', course2: 'MENG360', synergy_score: 19.8, students: 19, actual_gpa: 3.184, expected_gpa: 2.658},
+                {course1: 'EENG300', course2: 'MATH310', synergy_score: 17.4, students: 42, actual_gpa: 3.112, expected_gpa: 2.651},
+                {course1: 'CENG250', course2: 'MATH270', synergy_score: 17.3, students: 82, actual_gpa: 3.21, expected_gpa: 2.737},
+                {course1: 'CSCI300', course2: 'MATH210', synergy_score: 17.3, students: 19, actual_gpa: 3.313, expected_gpa: 2.825}
+            ],
+            negative: [
+                {course1: 'EENG250', course2: 'ENGG300', synergy_score: -24.1, students: 23, actual_gpa: 1.97, expected_gpa: 2.594},
+                {course1: 'CENG375', course2: 'CENG460', synergy_score: -16.5, students: 15, actual_gpa: 2.187, expected_gpa: 2.62},
+                {course1: 'EENG370', course2: 'MENG310', synergy_score: -12.7, students: 17, actual_gpa: 2.209, expected_gpa: 2.53},
+                {course1: 'ENGG450', course2: 'SURV455', synergy_score: -10.2, students: 16, actual_gpa: 2.384, expected_gpa: 2.656},
+                {course1: 'CSCI250', course2: 'EENG370', synergy_score: -10.1, students: 21, actual_gpa: 2.421, expected_gpa: 2.693},
+                {course1: 'CENG375', course2: 'ENGG300', synergy_score: -9.6, students: 21, actual_gpa: 2.202, expected_gpa: 2.437},
+                {course1: 'ENGG300', course2: 'MATH270', synergy_score: -9.5, students: 47, actual_gpa: 2.32, expected_gpa: 2.564},
+                {course1: 'CENG375', course2: 'CENG470', synergy_score: -9.2, students: 21, actual_gpa: 2.357, expected_gpa: 2.596},
+                {course1: 'ARAB200', course2: 'ENGL251', synergy_score: -8.0, students: 32, actual_gpa: 2.309, expected_gpa: 2.511},
+                {course1: 'CSCI250', course2: 'ENGG300', synergy_score: -7.8, students: 24, actual_gpa: 2.45, expected_gpa: 2.656}
+            ]
+        };
+        
+        // Load Course Synergy Data
+        function loadCourseSynergyData() {
+            // Load positive synergies
+            const positiveContainer = document.getElementById('positive-synergies');
+            if (positiveContainer) {
+                let positiveHTML = '';
+                courseSynergyData.positive.forEach(item => {
+                    positiveHTML += `
+                        <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 15px; padding: 15px; background: rgba(76, 175, 80, 0.1); border-radius: 10px; align-items: center;">
+                            <div>
+                                <strong style="font-size: 1.1em;">${item.course1} + ${item.course2}</strong>
+                                <div style="font-size: 0.9em; color: #b8b8d1; margin-top: 3px;">${item.students} students took this combination</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.5em; font-weight: bold; color: #4caf50;">+${item.synergy_score}%</div>
+                                <div style="font-size: 0.8em; color: #b8b8d1;">Synergy</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.2em; font-weight: bold;">${item.actual_gpa}</div>
+                                <div style="font-size: 0.8em; color: #b8b8d1;">Actual GPA</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.2em;">${item.expected_gpa}</div>
+                                <div style="font-size: 0.8em; color: #b8b8d1;">Expected GPA</div>
+                            </div>
+                        </div>
+                    `;
+                });
+                positiveContainer.innerHTML = positiveHTML;
+            }
+            
+            // Load negative synergies
+            const negativeContainer = document.getElementById('negative-synergies');
+            if (negativeContainer) {
+                let negativeHTML = '';
+                courseSynergyData.negative.forEach(item => {
+                    negativeHTML += `
+                        <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 15px; padding: 15px; background: rgba(255, 107, 107, 0.1); border-radius: 10px; align-items: center;">
+                            <div>
+                                <strong style="font-size: 1.1em;">${item.course1} + ${item.course2}</strong>
+                                <div style="font-size: 0.9em; color: #b8b8d1; margin-top: 3px;">${item.students} students took this combination</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.5em; font-weight: bold; color: #ff6b6b;">${item.synergy_score}%</div>
+                                <div style="font-size: 0.8em; color: #b8b8d1;">Synergy</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.2em; font-weight: bold;">${item.actual_gpa}</div>
+                                <div style="font-size: 0.8em; color: #b8b8d1;">Actual GPA</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.2em;">${item.expected_gpa}</div>
+                                <div style="font-size: 0.8em; color: #b8b8d1;">Expected GPA</div>
+                            </div>
+                        </div>
+                    `;
+                });
+                negativeContainer.innerHTML = negativeHTML;
+            }
+        }
+        
+        // Initialize synergy chart
+        let synergyChart = null;
+        function initializeSynergyChart() {
+            const ctx = document.getElementById('synergyChart');
+            if (!ctx || synergyChart) return;
+            
+            // Prepare data for visualization
+            const allSynergies = [...courseSynergyData.positive, ...courseSynergyData.negative];
+            const labels = allSynergies.map(s => `${s.course1}-${s.course2}`);
+            const scores = allSynergies.map(s => s.synergy_score);
+            const colors = scores.map(s => s > 0 ? 'rgba(76, 175, 80, 0.6)' : 'rgba(255, 107, 107, 0.6)');
+            
+            synergyChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Synergy Score (%)',
+                        data: scores,
+                        backgroundColor: colors,
+                        borderColor: colors.map(c => c.replace('0.6', '1')),
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const synergy = allSynergies[context.dataIndex];
+                                    return [
+                                        `Synergy: ${synergy.synergy_score}%`,
+                                        `Students: ${synergy.students}`,
+                                        `Actual GPA: ${synergy.actual_gpa}`,
+                                        `Expected GPA: ${synergy.expected_gpa}`
+                                    ];
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            ticks: {
+                                color: '#b8b8d1',
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: '#b8b8d1',
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Initialize synergy tab when clicked
+        document.addEventListener('DOMContentLoaded', function() {
+            const synergyTab = document.querySelector('button[onclick="showTab(\'course-synergy\')"]');
+            if (synergyTab) {
+                synergyTab.addEventListener('click', function() {
+                    setTimeout(() => {
+                        loadCourseSynergyData();
+                        if (!synergyChart) {
+                            initializeSynergyChart();
                         }
                     }, 100);
                 });
