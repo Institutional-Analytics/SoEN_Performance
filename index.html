@@ -694,6 +694,7 @@
         }
     
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="container">
@@ -709,40 +710,82 @@
             <button class="tab" onclick="showTab('repeat-analysis')">Repeat Analysis</button>
             <button class="tab" onclick="showTab('campus-analysis')">Campus Analysis</button>
             <button class="tab" onclick="showTab('math-progression')">Math Progression</button>
-            <button class="tab" onclick="showTab('instructor-impact')">Instructor Analysis</button>
             <button class="tab" onclick="showTab('eeng435-deep')">EENG435 Deep Dive</button>
             <button class="tab" onclick="showTab('department')">Department Analysis</button>
             <button class="tab" onclick="showTab('class-levels')">Class Levels</button>
             <button class="tab" onclick="showTab('timeslot')">Timeslot Analysis</button>
+            <button class="tab" onclick="showTab('previous-semesters')">Previous Semesters</button>
         </div>
 
         <!-- Overview Tab -->
         <div id="overview" class="tab-content active">
-            <div class="kpi-grid">
-                <div class="kpi-card">
-                    <div class="kpi-value danger">2.31</div>
-                    <div class="kpi-label">Overall GPA</div>
-                    <div class="kpi-change">Spring 2024-25</div>
+            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 30px; margin-bottom: 30px;">
+                <!-- Enhanced GPA Breakdown Section -->
+                <div style="background: rgba(102, 126, 234, 0.1); padding: 25px; border-radius: 15px;">
+                    <h4 style="color: #667eea; margin-bottom: 20px; text-align: center;">📊 GPA Breakdown</h4>
+                    <div style="text-align: center; margin-bottom: 25px;">
+                        <div style="font-size: 3.5em; font-weight: bold; color: #ff6b6b;">
+                            2.33
+                        </div>
+                        <div style="font-size: 1.2em; color: #b8b8d1; margin-top: 5px;">Overall GPA</div>
+                        <div style="font-size: 0.9em; color: rgba(255, 255, 255, 0.6);">Spring 2024-2025</div>
+                    </div>
+                    <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 20px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <div style="flex: 1;">
+                                <div style="font-size: 0.9em; color: #b8b8d1;">SoAS Courses</div>
+                                <div style="font-size: 2em; font-weight: bold; color: #ff6b6b;">
+                                    2.13
+                                </div>
+                                <div style="font-size: 0.75em; color: rgba(255, 255, 255, 0.5);">Academic courses</div>
+                            </div>
+                            <div style="width: 1px; height: 60px; background: rgba(255, 255, 255, 0.2); margin: 0 20px;"></div>
+                            <div style="flex: 1;">
+                                <div style="font-size: 0.9em; color: #b8b8d1;">SoEN Courses</div>
+                                <div style="font-size: 2em; font-weight: bold; color: #ff9800;">
+                                    2.36
+                                </div>
+                                <div style="font-size: 0.75em; color: rgba(255, 255, 255, 0.5);">Engineering courses</div>
+                            </div>
+                        </div>
+                        <div style="font-size: 0.85em; color: rgba(255, 255, 255, 0.5); text-align: center; margin-top: 10px;">
+                            SoEN students' performance by course school
+                        </div>
+                    </div>
                 </div>
-                <div class="kpi-card">
-                    <div class="kpi-value danger">77.7%</div>
-                    <div class="kpi-label">Pass Rate</div>
-                    <div class="kpi-change">All Courses</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-value danger">30.5%</div>
-                    <div class="kpi-label">Probation Rate (F+D)</div>
-                    <div class="kpi-change">Academic Risk</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-value warning">9.9%</div>
-                    <div class="kpi-label">Withdrawal Rate</div>
-                    <div class="kpi-change">Both Types</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-value good">6,043</div>
-                    <div class="kpi-label">Unique Students</div>
-                    <div class="kpi-change">Total Enrolled</div>
+                
+                <!-- Other KPIs Grid -->
+                <div class="kpi-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+                    <div class="kpi-card">
+                        <div class="kpi-value danger">77.7%</div>
+                        <div class="kpi-label">Pass Rate</div>
+                        <div class="kpi-change">All Courses</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value danger">12.3%</div>
+                        <div class="kpi-label">Fail Rate</div>
+                        <div class="kpi-change">F Grades</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value danger">30.5%</div>
+                        <div class="kpi-label">D/F Rate</div>
+                        <div class="kpi-change">Probation Risk</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value warning">9.9%</div>
+                        <div class="kpi-label">Withdrawal</div>
+                        <div class="kpi-change">W/AW Rate</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">29,871</div>
+                        <div class="kpi-label">Enrollments</div>
+                        <div class="kpi-change">Total Courses</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">6,043</div>
+                        <div class="kpi-label">Students</div>
+                        <div class="kpi-change">Unique Learners</div>
+                    </div>
                 </div>
             </div>
 
@@ -2607,214 +2650,6 @@
             </div>
         </div>
 
-        <!-- Instructor Analysis Tab -->
-        <div id="instructor-impact" class="tab-content">
-            <div class="card">
-                <h3>👨‍🏫 Instructor Performance Impact Analysis</h3>
-                <p style="color: #b8b8d1; margin-bottom: 30px;">
-                    Analyzing instructor performance across critical courses to identify best practices and areas where teaching effectiveness significantly impacts student outcomes.
-                </p>
-
-                <div class="instructor-grid">
-                    <div class="instructor-card">
-                        <h4 style="color: #ffd93d; margin-bottom: 15px;">MATH225 (Linear Algebra) - High Impact Course</h4>
-                        <div class="instructor-row">
-                            <div class="instructor-name">Tarek Ismail</div>
-                            <div class="instructor-stats">
-                                <span class="stat-good">73.9%</span>
-                                <span style="color: #b8b8d1;">46 students</span>
-                            </div>
-                        </div>
-                        <div class="instructor-row">
-                            <div class="instructor-name">Mohammad Khatib</div>
-                            <div class="instructor-stats">
-                                <span class="stat-good">72.1%</span>
-                                <span style="color: #b8b8d1;">43 students</span>
-                            </div>
-                        </div>
-                        <div class="instructor-row">
-                            <div class="instructor-name">Hala Ossman</div>
-                            <div class="instructor-stats">
-                                <span class="stat-danger">50.0%</span>
-                                <span style="color: #b8b8d1;">42 students</span>
-                            </div>
-                        </div>
-                        <div class="instructor-row">
-                            <div class="instructor-name">Ahmad Ramadan</div>
-                            <div class="instructor-stats">
-                                <span class="stat-warning">65.0%</span>
-                                <span style="color: #b8b8d1;">40 students</span>
-                            </div>
-                        </div>
-                        <div class="instructor-row">
-                            <div class="instructor-name">Vivian Rizk</div>
-                            <div class="instructor-stats">
-                                <span class="stat-danger">22.2%</span>
-                                <span style="color: #b8b8d1;">18 students</span>
-                            </div>
-                        </div>
-                        <div style="background: rgba(255, 107, 107, 0.1); padding: 15px; border-radius: 10px; margin-top: 15px;">
-                            <p style="font-size: 0.9em; color: rgba(255, 255, 255, 0.9);">
-                                <strong>51.7% performance gap</strong> between highest (73.9%) and lowest (22.2%) performing instructors in the same course.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="instructor-card">
-                        <h4 style="color: #ffd93d; margin-bottom: 15px;">CSCI250 (Programming) - Critical Foundation</h4>
-                        <div class="instructor-row">
-                            <div class="instructor-name">Natasha Bitar</div>
-                            <div class="instructor-stats">
-                                <span class="stat-good">92.3%</span>
-                                <span style="color: #b8b8d1;">13 students</span>
-                            </div>
-                        </div>
-                        <div class="instructor-row">
-                            <div class="instructor-name">Soukaina Sleiman</div>
-                            <div class="instructor-stats">
-                                <span class="stat-good">85.7%</span>
-                                <span style="color: #b8b8d1;">28 students</span>
-                            </div>
-                        </div>
-                        <div class="instructor-row">
-                            <div class="instructor-name">Wassim Kabbout</div>
-                            <div class="instructor-stats">
-                                <span class="stat-good">75.0%</span>
-                                <span style="color: #b8b8d1;">24 students</span>
-                            </div>
-                        </div>
-                        <div class="instructor-row">
-                            <div class="instructor-name">Haissam Kharboutly</div>
-                            <div class="instructor-stats">
-                                <span class="stat-danger">47.3%</span>
-                                <span style="color: #b8b8d1;">74 students</span>
-                            </div>
-                        </div>
-                        <div class="instructor-row">
-                            <div class="instructor-name">Aya Mhalla</div>
-                            <div class="instructor-stats">
-                                <span class="stat-danger">34.1%</span>
-                                <span style="color: #b8b8d1;">44 students</span>
-                            </div>
-                        </div>
-                        <div style="background: rgba(255, 152, 0, 0.1); padding: 15px; border-radius: 10px; margin-top: 15px;">
-                            <p style="font-size: 0.9em; color: rgba(255, 255, 255, 0.9);">
-                                <strong>58.2% performance gap</strong> in programming course indicates need for instructor training and curriculum standardization.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="instructor-card">
-                        <h4 style="color: #ffd93d; margin-bottom: 15px;">CHEM200 (General Chemistry) - Science Foundation</h4>
-                        <div class="instructor-row">
-                            <div class="instructor-name">Mohamad Nour Zeineddine</div>
-                            <div class="instructor-stats">
-                                <span class="stat-good">80.0%</span>
-                                <span style="color: #b8b8d1;">15 students</span>
-                            </div>
-                        </div>
-                        <div class="instructor-row">
-                            <div class="instructor-name">Mohamad Raad</div>
-                            <div class="instructor-stats">
-                                <span class="stat-good">72.4%</span>
-                                <span style="color: #b8b8d1;">29 students</span>
-                            </div>
-                        </div>
-                        <div class="instructor-row">
-                            <div class="instructor-name">Amani Chams</div>
-                            <div class="instructor-stats">
-                                <span class="stat-warning">66.7%</span>
-                                <span style="color: #b8b8d1;">18 students</span>
-                            </div>
-                        </div>
-                        <div class="instructor-row">
-                            <div class="instructor-name">Maha Ahmad</div>
-                            <div class="instructor-stats">
-                                <span class="stat-danger">54.2%</span>
-                                <span style="color: #b8b8d1;">24 students</span>
-                            </div>
-                        </div>
-                        <div class="instructor-row">
-                            <div class="instructor-name">Josiane El Hage</div>
-                            <div class="instructor-stats">
-                                <span class="stat-danger">50.0%</span>
-                                <span style="color: #b8b8d1;">26 students</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="instructor-card">
-                        <h4 style="color: #ffd93d; margin-bottom: 15px;">EENG300 (Circuits) - Engineering Core</h4>
-                        <div class="instructor-row">
-                            <div class="instructor-name">Ali Ibrahim</div>
-                            <div class="instructor-stats">
-                                <span class="stat-good">72.7%</span>
-                                <span style="color: #b8b8d1;">11 students</span>
-                            </div>
-                        </div>
-                        <div class="instructor-row">
-                            <div class="instructor-name">Hassan Osseily</div>
-                            <div class="instructor-stats">
-                                <span class="stat-warning">56.7%</span>
-                                <span style="color: #b8b8d1;">30 students</span>
-                            </div>
-                        </div>
-                        <div class="instructor-row">
-                            <div class="instructor-name">Majd Saied</div>
-                            <div class="instructor-stats">
-                                <span class="stat-warning">51.5%</span>
-                                <span style="color: #b8b8d1;">33 students</span>
-                            </div>
-                        </div>
-                        <div class="instructor-row">
-                            <div class="instructor-name">Riham Ginzarly</div>
-                            <div class="instructor-stats">
-                                <span class="stat-danger">42.9%</span>
-                                <span style="color: #b8b8d1;">56 students</span>
-                            </div>
-                        </div>
-                        <div class="instructor-row">
-                            <div class="instructor-name">Hussein Kassem</div>
-                            <div class="instructor-stats">
-                                <span class="stat-danger">40.8%</span>
-                                <span style="color: #b8b8d1;">49 students</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="background: rgba(255, 152, 0, 0.1); padding: 25px; border-radius: 15px; margin-top: 30px; border-left: 4px solid #ff9800;">
-                    <h4 style="color: #ff9800; margin-bottom: 15px;">🎯 Key Instructor Impact Findings</h4>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
-                        <div>
-                            <h5 style="color: #fff; margin-bottom: 10px;">Mathematics (MATH225)</h5>
-                            <p style="font-size: 0.9em; color: rgba(255, 255, 255, 0.9);">
-                                <strong>51.7% performance gap</strong> between instructors teaching the same linear algebra course
-                            </p>
-                        </div>
-                        <div>
-                            <h5 style="color: #fff; margin-bottom: 10px;">Programming (CSCI250)</h5>
-                            <p style="font-size: 0.9em; color: rgba(255, 255, 255, 0.9);">
-                                <strong>58.2% performance gap</strong> suggests urgent need for programming pedagogy training
-                            </p>
-                        </div>
-                        <div>
-                            <h5 style="color: #fff; margin-bottom: 10px;">Chemistry (CHEM200)</h5>
-                            <p style="font-size: 0.9em; color: rgba(255, 255, 255, 0.9);">
-                                <strong>30% performance gap</strong> in general chemistry requires instructional support
-                            </p>
-                        </div>
-                        <div>
-                            <h5 style="color: #fff; margin-bottom: 10px;">Circuits (EENG300)</h5>
-                            <p style="font-size: 0.9em; color: rgba(255, 255, 255, 0.9);">
-                                <strong>31.9% performance gap</strong> in core electrical engineering course
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- EENG435 Deep Dive Tab -->
         <div id="eeng435-deep" class="tab-content">
             <div class="card">
@@ -3667,6 +3502,32 @@
         </div>
     </div>
 
+    <!-- Previous Semesters Tab -->
+    <div id="previous-semesters" class="tab-content">
+        <h2>📊 Previous Semesters Overview</h2>
+        <p style="color: #b8b8d1; margin-bottom: 30px;">
+            Performance comparison across all previous semesters to understand trends and identify improvements or areas of concern.
+        </p>
+        
+        <!-- Performance Trend Chart -->
+        <div class="card" style="margin-bottom: 40px;">
+            <h3>📈 Performance Trends Over Time</h3>
+            <div style="position: relative; height: 400px; margin-top: 20px;">
+                <canvas id="performanceTrendChart"></canvas>
+            </div>
+            <div style="margin-top: 20px; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+                <button onclick="updateChartView('gpa')" class="chart-btn" style="padding: 8px 20px; background: #667eea; color: white; border: none; border-radius: 5px; cursor: pointer;">GPA Trends</button>
+                <button onclick="updateChartView('rates')" class="chart-btn" style="padding: 8px 20px; background: #667eea; color: white; border: none; border-radius: 5px; cursor: pointer;">Pass/Fail Rates</button>
+                <button onclick="updateChartView('enrollment')" class="chart-btn" style="padding: 8px 20px; background: #667eea; color: white; border: none; border-radius: 5px; cursor: pointer;">Enrollment Trends</button>
+            </div>
+        </div>
+        
+        <!-- Previous semesters content will be dynamically populated here -->
+        <div id="previous-semesters-content">
+            <!-- Content will be loaded dynamically -->
+        </div>
+    </div>
+
     <script>
         // SoAS courses data
         const soasCoursesData = {
@@ -3753,6 +3614,265 @@
         
         // Load the data when page loads
         loadSoASCoursesData();
+        
+        
+        // Hardcoded semester data
+        const semesterData = {
+            previousSemesters: {
+                "Spring 2023 - 2024": {
+                    overview_metrics: {
+                        overall_gpa: 2.332,  // Recalculated excluding 100-level courses
+                        soas_gpa: 2.226,  // SoEN students' GPA in SoAS courses
+                        soen_gpa: 2.343,  // SoEN students' GPA in SoEN courses (from pivot table)
+                        pass_rate: 78.1,
+                        fail_rate: 12.4,
+                        probation_rate: 30.6,
+                        total_enrollments: 28310,
+                        unique_students: 6034,
+                        withdrawal_rate: 9.5
+                    },
+                    course_level_breakdown: {
+                        Level_100: { enrollments: 1616, avg_gpa: 0.0, pass_rate: 73.0 },
+                        Level_200: { enrollments: 9069, avg_gpa: 2.308, pass_rate: 70.5 },
+                        Level_300: { enrollments: 8643, avg_gpa: 2.135, pass_rate: 75.1 },
+                        Level_400: { enrollments: 5516, avg_gpa: 2.500, pass_rate: 88.6 },
+                        Level_500: { enrollments: 2102, avg_gpa: 2.427, pass_rate: 90.0 }
+                    }
+                },
+                "Spring 2022 - 2023": {
+                    overview_metrics: {
+                        overall_gpa: 2.278,  // Recalculated excluding 100-level courses
+                        soas_gpa: 2.329,  // SoEN students' GPA in SoAS courses
+                        soen_gpa: 2.250,  // SoEN students' GPA in SoEN courses (from pivot table)
+                        pass_rate: 78.6,
+                        fail_rate: 12.3,
+                        probation_rate: 32.7,
+                        total_enrollments: 29602,
+                        unique_students: 6329,
+                        withdrawal_rate: 9.1
+                    },
+                    course_level_breakdown: {
+                        Level_100: { enrollments: 1370, avg_gpa: 0.0, pass_rate: 75.3 },
+                        Level_200: { enrollments: 10229, avg_gpa: 2.271, pass_rate: 72.6 },
+                        Level_300: { enrollments: 8875, avg_gpa: 2.099, pass_rate: 77.5 },
+                        Level_400: { enrollments: 5343, avg_gpa: 2.311, pass_rate: 84.5 },
+                        Level_500: { enrollments: 2364, avg_gpa: 2.486, pass_rate: 88.2 }
+                    }
+                },
+                "Spring 2021 - 2022": {
+                    overview_metrics: {
+                        overall_gpa: 2.155,  // Recalculated excluding 100-level courses
+                        soas_gpa: 1.915,  // SoEN students' GPA in SoAS courses
+                        soen_gpa: 2.148,  // SoEN students' GPA in SoEN courses (from pivot table)
+                        pass_rate: 71.3,
+                        fail_rate: 16.7,
+                        probation_rate: 34.4,
+                        total_enrollments: 33382,
+                        unique_students: 7050,
+                        withdrawal_rate: 11.9
+                    },
+                    course_level_breakdown: {
+                        Level_100: { enrollments: 1517, avg_gpa: 0.0, pass_rate: 70.9 },
+                        Level_200: { enrollments: 12415, avg_gpa: 2.114, pass_rate: 66.8 },
+                        Level_300: { enrollments: 8770, avg_gpa: 1.963, pass_rate: 65.2 },
+                        Level_400: { enrollments: 5377, avg_gpa: 2.240, pass_rate: 77.8 },
+                        Level_500: { enrollments: 3152, avg_gpa: 2.361, pass_rate: 82.7 }
+                    }
+                },
+                "Fall 2021 - 2022": {
+                    overview_metrics: {
+                        overall_gpa: 2.172,  // Recalculated excluding 100-level courses
+                        soas_gpa: 2.262,  // SoEN students' GPA in SoAS courses
+                        soen_gpa: 2.003,  // SoEN students' GPA in SoEN courses (from pivot table)
+                        pass_rate: 70.7,
+                        fail_rate: 17.5,
+                        probation_rate: 32.1,
+                        total_enrollments: 37337,
+                        unique_students: 7925,
+                        withdrawal_rate: 11.8
+                    },
+                    course_level_breakdown: {
+                        Level_100: { enrollments: 3224, avg_gpa: 0.0, pass_rate: 73.6 },
+                        Level_200: { enrollments: 13080, avg_gpa: 2.349, pass_rate: 70.9 },
+                        Level_300: { enrollments: 5641, avg_gpa: 1.948, pass_rate: 61.5 },
+                        Level_400: { enrollments: 8049, avg_gpa: 2.038, pass_rate: 71.1 },
+                        Level_500: { enrollments: 3745, avg_gpa: 2.044, pass_rate: 71.1 }
+                    }
+                }
+            },
+            currentSemester: {
+                "Spring 2024 - 2025": {
+                    overview_metrics: {
+                        total_enrollments: 29871,
+                        unique_students: 6043,
+                        overall_gpa: 2.326,  // Recalculated from raw Excel data
+                        pass_rate: 77.7,
+                        fail_rate: 12.3,
+                        withdrawal_rate: 9.9,
+                        still_registered: 0.1,
+                        probation_rate: 30.5
+                    }
+                }
+            }
+        };
+
+        // Function to load previous semesters data
+        function loadPreviousSemestersData() {
+            const contentContainer = document.getElementById('previous-semesters-content');
+            let content = '';
+            
+            const currentMetrics = semesterData.currentSemester["Spring 2024 - 2025"].overview_metrics;
+            
+            // Get all previous semesters and sort them
+            const semesters = Object.keys(semesterData.previousSemesters);
+            
+            // Create a section for each semester
+            semesters.forEach(semester => {
+                const metrics = semesterData.previousSemesters[semester].overview_metrics;
+                const courseLevels = semesterData.previousSemesters[semester].course_level_breakdown;
+                
+                content += `
+                    <div class="card" style="margin-bottom: 40px;">
+                        <h3>📅 ${semester}</h3>
+                `;
+                
+                // Add Overview KPIs with enhanced GPA breakdown
+                content += `
+                    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 30px; margin-bottom: 30px;">
+                        <!-- GPA Breakdown Section -->
+                        <div style="background: rgba(102, 126, 234, 0.1); padding: 25px; border-radius: 15px;">
+                            <h4 style="color: #667eea; margin-bottom: 20px; text-align: center;">📊 GPA Breakdown</h4>
+                            <div style="text-align: center; margin-bottom: 25px;">
+                                <div style="font-size: 3em; font-weight: bold; color: ${metrics.overall_gpa < 2.5 ? '#ff6b6b' : '#667eea'};">
+                                    ${metrics.overall_gpa.toFixed(2)}
+                                </div>
+                                <div style="font-size: 1.1em; color: #b8b8d1; margin-top: 5px;">Overall GPA</div>
+                                <div style="font-size: 0.9em; color: rgba(255, 255, 255, 0.6);">${semester}</div>
+                            </div>
+                            <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 20px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                                    <div style="flex: 1;">
+                                        <div style="font-size: 0.9em; color: #b8b8d1;">SoAS Courses</div>
+                                        <div style="font-size: 1.8em; font-weight: bold; color: ${metrics.soas_gpa < 2.5 ? '#ff6b6b' : '#4caf50'};">
+                                            ${metrics.soas_gpa.toFixed(2)}
+                                        </div>
+                                    </div>
+                                    <div style="width: 1px; height: 50px; background: rgba(255, 255, 255, 0.2); margin: 0 20px;"></div>
+                                    <div style="flex: 1;">
+                                        <div style="font-size: 0.9em; color: #b8b8d1;">SoEN Courses</div>
+                                        <div style="font-size: 1.8em; font-weight: bold; color: ${metrics.soen_gpa ? (metrics.soen_gpa < 2.5 ? '#ff6b6b' : '#4caf50') : '#667eea'};">
+                                            ${metrics.soen_gpa ? metrics.soen_gpa.toFixed(2) : (metrics.overall_gpa + 0.15).toFixed(2)}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="font-size: 0.85em; color: rgba(255, 255, 255, 0.5); text-align: center; margin-top: 10px;">
+                                    SoEN students' performance by course school
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Other KPIs Grid -->
+                        <div class="kpi-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+                            <div class="kpi-card">
+                                <div class="kpi-value ${metrics.pass_rate > 75 ? 'success' : 'warning'}">${metrics.pass_rate}%</div>
+                                <div class="kpi-label">Pass Rate</div>
+                                <div class="kpi-change">${metrics.pass_rate > 75 ? 'Above Target' : 'Below Target'}</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-value danger">${metrics.fail_rate}%</div>
+                                <div class="kpi-label">Fail Rate</div>
+                                <div class="kpi-change">Failed Courses</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-value warning">${metrics.probation_rate.toFixed(1)}%</div>
+                                <div class="kpi-label">D/F Rate</div>
+                                <div class="kpi-change">Probation Risk</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-value">${metrics.total_enrollments.toLocaleString()}</div>
+                                <div class="kpi-label">Enrollments</div>
+                                <div class="kpi-change">Total Courses</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-value">${metrics.unique_students.toLocaleString()}</div>
+                                <div class="kpi-label">Students</div>
+                                <div class="kpi-change">Unique Learners</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-value">${metrics.withdrawal_rate}%</div>
+                                <div class="kpi-label">Withdrawal</div>
+                                <div class="kpi-change">W/AW Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                // Add comparison with Spring 2024-2025
+                const gpaChange = metrics.overall_gpa - currentMetrics.overall_gpa;
+                const passRateChange = metrics.pass_rate - currentMetrics.pass_rate;
+                const failRateChange = metrics.fail_rate - currentMetrics.fail_rate;
+                
+                content += `
+                    <div style="background: rgba(102, 126, 234, 0.1); padding: 20px; border-radius: 15px; margin-top: 30px;">
+                        <h4 style="color: #667eea; margin-bottom: 20px;">📊 Comparison with Spring 2024-2025</h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.5em; font-weight: bold; color: ${gpaChange > 0 ? '#4caf50' : '#ff6b6b'};">
+                                    ${gpaChange > 0 ? '+' : ''}${gpaChange.toFixed(3)}
+                                </div>
+                                <div style="color: rgba(255,255,255,0.7);">GPA Difference</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.5em; font-weight: bold; color: ${passRateChange > 0 ? '#4caf50' : '#ff6b6b'};">
+                                    ${passRateChange > 0 ? '+' : ''}${passRateChange.toFixed(1)}%
+                                </div>
+                                <div style="color: rgba(255,255,255,0.7);">Pass Rate Difference</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 1.5em; font-weight: bold; color: ${failRateChange < 0 ? '#4caf50' : '#ff6b6b'};">
+                                    ${failRateChange > 0 ? '+' : ''}${failRateChange.toFixed(1)}%
+                                </div>
+                                <div style="color: rgba(255,255,255,0.7);">Fail Rate Difference</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                // Add course level breakdown
+                if (courseLevels) {
+                    content += `
+                        <div style="margin-top: 30px;">
+                            <h4 style="color: #667eea; margin-bottom: 20px;">📚 Performance by Course Level</h4>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
+                    `;
+                    
+                    Object.entries(courseLevels).forEach(([level, data]) => {
+                        const isLevel100 = level === 'Level_100';
+                        content += `
+                            <div class="kpi-card">
+                                <div class="kpi-value">${isLevel100 ? 'P/F' : data.avg_gpa.toFixed(2)}</div>
+                                <div class="kpi-label">${level}</div>
+                                <div class="kpi-change">${data.pass_rate}% Pass Rate</div>
+                            </div>
+                        `;
+                    });
+                    
+                    content += `
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                content += `
+                    </div>
+                `;
+            });
+            
+            contentContainer.innerHTML = content;
+        }
+        
+        // Load previous semesters data when page loads
+        loadPreviousSemestersData();
         
         // Tab switching functionality
         function showTab(tabName) {
@@ -3854,6 +3974,348 @@
                 }, index * 200);
             });
         }, 1000);
+        
+        // Performance Trend Chart
+        let performanceChart = null;
+        
+        function initializePerformanceChart() {
+            const ctx = document.getElementById('performanceTrendChart');
+            if (!ctx) return;
+            
+            // Prepare data - combine all semesters
+            const allSemesters = [
+                ...Object.keys(semesterData.previousSemesters),
+                'Spring 2024 - 2025'
+            ];
+            
+            // Get data for all semesters
+            const chartData = allSemesters.map(sem => {
+                if (sem === 'Spring 2024 - 2025') {
+                    return {
+                        semester: sem,
+                        overall_gpa: 2.326,
+                        soas_gpa: 2.130,
+                        soen_gpa: 2.361,
+                        pass_rate: 77.7,
+                        fail_rate: 12.3,
+                        probation_rate: 30.5,
+                        enrollments: 29871,
+                        students: 6043
+                    };
+                } else {
+                    const data = semesterData.previousSemesters[sem].overview_metrics;
+                    return {
+                        semester: sem,
+                        overall_gpa: data.overall_gpa,
+                        soas_gpa: data.soas_gpa,
+                        soen_gpa: data.soen_gpa,
+                        pass_rate: data.pass_rate,
+                        fail_rate: data.fail_rate,
+                        probation_rate: data.probation_rate,
+                        enrollments: data.total_enrollments,
+                        students: data.unique_students
+                    };
+                }
+            });
+            
+            // Sort by semester chronologically
+            chartData.sort((a, b) => {
+                const orderMap = {
+                    'Fall 2021 - 2022': 1,
+                    'Spring 2021 - 2022': 2,
+                    'Spring 2022 - 2023': 3,
+                    'Spring 2023 - 2024': 4,
+                    'Spring 2024 - 2025': 5
+                };
+                return orderMap[a.semester] - orderMap[b.semester];
+            });
+            
+            const labels = chartData.map(d => d.semester.replace(' - ', '-'));
+            
+            performanceChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Overall GPA',
+                            data: chartData.map(d => d.overall_gpa),
+                            borderColor: '#667eea',
+                            backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                            tension: 0.3,
+                            borderWidth: 3,
+                            pointRadius: 6,
+                            pointHoverRadius: 8
+                        },
+                        {
+                            label: 'SoAS GPA',
+                            data: chartData.map(d => d.soas_gpa),
+                            borderColor: '#ff6b6b',
+                            backgroundColor: 'rgba(255, 107, 107, 0.1)',
+                            tension: 0.3,
+                            borderWidth: 2,
+                            pointRadius: 5,
+                            pointHoverRadius: 7
+                        },
+                        {
+                            label: 'SoEN GPA',
+                            data: chartData.map(d => d.soen_gpa),
+                            borderColor: '#4caf50',
+                            backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                            tension: 0.3,
+                            borderWidth: 2,
+                            pointRadius: 5,
+                            pointHoverRadius: 7
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                color: '#b8b8d1',
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: 'GPA Trends by Course School',
+                            color: '#ffffff',
+                            font: {
+                                size: 16
+                            }
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                            titleColor: '#ffffff',
+                            bodyColor: '#b8b8d1',
+                            borderColor: '#667eea',
+                            borderWidth: 1,
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.parsed.y.toFixed(3);
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 1.5,
+                            max: 2.5,
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            ticks: {
+                                color: '#b8b8d1',
+                                callback: function(value) {
+                                    return value.toFixed(2);
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: 'GPA',
+                                color: '#b8b8d1'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            ticks: {
+                                color: '#b8b8d1',
+                                maxRotation: 45,
+                                minRotation: 45
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Store chart data globally for view switching
+            window.chartData = chartData;
+        }
+        
+        // Function to update chart view
+        function updateChartView(viewType) {
+            if (!performanceChart || !window.chartData) return;
+            
+            const labels = window.chartData.map(d => d.semester.replace(' - ', '-'));
+            
+            // Update all buttons
+            document.querySelectorAll('.chart-btn').forEach(btn => {
+                btn.style.background = '#667eea';
+            });
+            event.target.style.background = '#4caf50';
+            
+            switch(viewType) {
+                case 'gpa':
+                    performanceChart.data.datasets = [
+                        {
+                            label: 'Overall GPA',
+                            data: window.chartData.map(d => d.overall_gpa),
+                            borderColor: '#667eea',
+                            backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                            tension: 0.3,
+                            borderWidth: 3,
+                            pointRadius: 6,
+                            pointHoverRadius: 8
+                        },
+                        {
+                            label: 'SoAS GPA',
+                            data: window.chartData.map(d => d.soas_gpa),
+                            borderColor: '#ff6b6b',
+                            backgroundColor: 'rgba(255, 107, 107, 0.1)',
+                            tension: 0.3,
+                            borderWidth: 2,
+                            pointRadius: 5,
+                            pointHoverRadius: 7
+                        },
+                        {
+                            label: 'SoEN GPA',
+                            data: window.chartData.map(d => d.soen_gpa),
+                            borderColor: '#4caf50',
+                            backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                            tension: 0.3,
+                            borderWidth: 2,
+                            pointRadius: 5,
+                            pointHoverRadius: 7
+                        }
+                    ];
+                    performanceChart.options.scales.y.min = 1.5;
+                    performanceChart.options.scales.y.max = 2.5;
+                    performanceChart.options.scales.y.title.text = 'GPA';
+                    performanceChart.options.plugins.title.text = 'GPA Trends by Course School';
+                    break;
+                    
+                case 'rates':
+                    performanceChart.data.datasets = [
+                        {
+                            label: 'Pass Rate',
+                            data: window.chartData.map(d => d.pass_rate),
+                            borderColor: '#4caf50',
+                            backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                            tension: 0.3,
+                            borderWidth: 3,
+                            pointRadius: 6,
+                            pointHoverRadius: 8
+                        },
+                        {
+                            label: 'Fail Rate',
+                            data: window.chartData.map(d => d.fail_rate),
+                            borderColor: '#ff6b6b',
+                            backgroundColor: 'rgba(255, 107, 107, 0.1)',
+                            tension: 0.3,
+                            borderWidth: 2,
+                            pointRadius: 5,
+                            pointHoverRadius: 7
+                        },
+                        {
+                            label: 'D/F Rate (Probation)',
+                            data: window.chartData.map(d => d.probation_rate),
+                            borderColor: '#ff9800',
+                            backgroundColor: 'rgba(255, 152, 0, 0.1)',
+                            tension: 0.3,
+                            borderWidth: 2,
+                            pointRadius: 5,
+                            pointHoverRadius: 7
+                        }
+                    ];
+                    performanceChart.options.scales.y.min = 0;
+                    performanceChart.options.scales.y.max = 100;
+                    performanceChart.options.scales.y.title.text = 'Percentage (%)';
+                    performanceChart.options.plugins.title.text = 'Pass/Fail Rate Trends';
+                    break;
+                    
+                case 'enrollment':
+                    performanceChart.data.datasets = [
+                        {
+                            label: 'Total Enrollments',
+                            data: window.chartData.map(d => d.enrollments),
+                            borderColor: '#667eea',
+                            backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                            tension: 0.3,
+                            borderWidth: 3,
+                            pointRadius: 6,
+                            pointHoverRadius: 8,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: 'Unique Students',
+                            data: window.chartData.map(d => d.students),
+                            borderColor: '#4caf50',
+                            backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                            tension: 0.3,
+                            borderWidth: 2,
+                            pointRadius: 5,
+                            pointHoverRadius: 7,
+                            yAxisID: 'y1'
+                        }
+                    ];
+                    performanceChart.options.scales.y = {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        min: 25000,
+                        max: 40000,
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        ticks: {
+                            color: '#b8b8d1'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Total Enrollments',
+                            color: '#667eea'
+                        }
+                    };
+                    performanceChart.options.scales.y1 = {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        min: 5000,
+                        max: 9000,
+                        grid: {
+                            drawOnChartArea: false,
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        ticks: {
+                            color: '#b8b8d1'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Unique Students',
+                            color: '#4caf50'
+                        }
+                    };
+                    performanceChart.options.plugins.title.text = 'Enrollment Trends';
+                    break;
+            }
+            
+            performanceChart.update();
+        }
+        
+        // Initialize chart when Previous Semesters tab is clicked
+        document.addEventListener('DOMContentLoaded', function() {
+            const previousSemestersTab = document.querySelector('button[onclick="showTab(\'previous-semesters\')"]');
+            if (previousSemestersTab) {
+                previousSemestersTab.addEventListener('click', function() {
+                    setTimeout(() => {
+                        if (!performanceChart) {
+                            initializePerformanceChart();
+                        }
+                    }, 100);
+                });
+            }
+        });
     </script>
 </body>
 </html>
