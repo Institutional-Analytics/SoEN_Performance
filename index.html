@@ -723,6 +723,7 @@
             <button class="tab" onclick="showTab('class-levels')">Class Levels</button>
             <button class="tab" onclick="showTab('timeslot')">Timeslot Analysis</button>
             <button class="tab" onclick="showTab('course-synergy')">Course Synergy</button>
+            <button class="tab" onclick="showTab('bt-baccii-detail')">BT & BACCII Detailed</button>
         </div>
 
         <!-- Overview Tab -->
@@ -3801,6 +3802,390 @@
             <h3 style="color: #667eea; margin-bottom: 20px;">📈 Synergy Score Distribution</h3>
             <div style="position: relative; height: 300px;">
                 <canvas id="synergyChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- BT & BACCII Detailed Analysis Tab -->
+    <div id="bt-baccii-detail" class="tab-content">
+        <div class="card">
+            <h3>📊 BT & BACCII Detailed Performance Analysis</h3>
+            <p style="color: #b8b8d1; margin-bottom: 30px;">
+                Breaking down performance by specific BT majors and BACCII programs based on Spring 2024-2025 data.
+                Analysis includes 582 BT students and 5,296 BACCII students across various engineering disciplines.
+            </p>
+
+            <!-- BT Programs Breakdown -->
+            <div style="margin-bottom: 40px;">
+                <h4 style="color: #ff6b6b; margin-bottom: 20px;">🎓 BT Programs Performance (Top 5 by Enrollment)</h4>
+                <div class="demo-grid">
+                    <!-- BT MENG -->
+                    <div class="demo-card">
+                        <h5 style="color: #ffd93d; margin-bottom: 15px;">MENG - Mechanical Engineering</h5>
+                        <div style="margin-bottom: 15px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span style="color: #b8b8d1;">Total Students: <strong>179</strong></span>
+                                <span style="color: #ff6b6b;">Avg GPA: <strong>1.05</strong></span>
+                            </div>
+                            <div class="demo-bar" style="margin-bottom: 10px;">
+                                <div class="demo-fill" style="width: 26.7%; background: linear-gradient(90deg, #ff6b6b, #ff9800); text-align: center; padding: 2px 0;">26.7% ≥2.0</div>
+                            </div>
+                            <div style="font-size: 0.85em; color: rgba(255, 255, 255, 0.7); line-height: 1.5;">
+                                • Grades ≥2.0: 26.7%<br>
+                                • Grades <2.0: 73.3%<br>
+                                • Critical Courses: CHEM160, ENGL101, ENGL051<br>
+                                • Status: Requires immediate intervention
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BT EENG -->
+                    <div class="demo-card">
+                        <h5 style="color: #ffd93d; margin-bottom: 15px;">EENG - Electrical Engineering</h5>
+                        <div style="margin-bottom: 15px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span style="color: #b8b8d1;">Total Students: <strong>165</strong></span>
+                                <span style="color: #ff6b6b;">Avg GPA: <strong>1.23</strong></span>
+                            </div>
+                            <div class="demo-bar" style="margin-bottom: 10px;">
+                                <div class="demo-fill" style="width: 33.0%; background: linear-gradient(90deg, #ff6b6b, #ff9800); text-align: center; padding: 2px 0;">33.0% ≥2.0</div>
+                            </div>
+                            <div style="font-size: 0.85em; color: rgba(255, 255, 255, 0.7); line-height: 1.5;">
+                                • Grades ≥2.0: 33.0%<br>
+                                • Grades <2.0: 67.0%<br>
+                                • Critical Courses: CHEM160, ENGL101, ENGL051<br>
+                                • Status: High risk - enhanced support needed
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BT CENG -->
+                    <div class="demo-card">
+                        <h5 style="color: #ffd93d; margin-bottom: 15px;">CENG - Civil Engineering</h5>
+                        <div style="margin-bottom: 15px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span style="color: #b8b8d1;">Total Students: <strong>58</strong></span>
+                                <span style="color: #ff6b6b;">Avg GPA: <strong>1.34</strong></span>
+                            </div>
+                            <div class="demo-bar" style="margin-bottom: 10px;">
+                                <div class="demo-fill" style="width: 34.3%; background: linear-gradient(90deg, #ff6b6b, #ff9800); text-align: center; padding: 2px 0;">34.3% ≥2.0</div>
+                            </div>
+                            <div style="font-size: 0.85em; color: rgba(255, 255, 255, 0.7); line-height: 1.5;">
+                                • Grades ≥2.0: 34.3%<br>
+                                • Grades <2.0: 65.7%<br>
+                                • Critical Courses: CHEM160, ENGL051, ENGL101<br>
+                                • Status: High risk - targeted support needed
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BT TENG -->
+                    <div class="demo-card">
+                        <h5 style="color: #ffd93d; margin-bottom: 15px;">TENG - Telecommunications Engineering</h5>
+                        <div style="margin-bottom: 15px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span style="color: #b8b8d1;">Total Students: <strong>40</strong></span>
+                                <span style="color: #ff6b6b;">Avg GPA: <strong>1.07</strong></span>
+                            </div>
+                            <div class="demo-bar" style="margin-bottom: 10px;">
+                                <div class="demo-fill" style="width: 26.3%; background: linear-gradient(90deg, #ff6b6b, #ff9800); text-align: center; padding: 2px 0;">26.3% ≥2.0</div>
+                            </div>
+                            <div style="font-size: 0.85em; color: rgba(255, 255, 255, 0.7); line-height: 1.5;">
+                                • Grades ≥2.0: 26.3%<br>
+                                • Grades <2.0: 73.7%<br>
+                                • Critical Courses: CENG430L, CENG455L, CHEM160<br>
+                                • Status: Critical - immediate intervention required
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BT MEENG -->
+                    <div class="demo-card">
+                        <h5 style="color: #ffd93d; margin-bottom: 15px;">MEENG - Mechatronics Engineering</h5>
+                        <div style="margin-bottom: 15px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span style="color: #b8b8d1;">Total Students: <strong>33</strong></span>
+                                <span style="color: #4caf50;">Avg GPA: <strong>2.36</strong></span>
+                            </div>
+                            <div class="demo-bar" style="margin-bottom: 10px;">
+                                <div class="demo-fill" style="width: 68.8%; background: linear-gradient(90deg, #ff9800, #4caf50); text-align: center; padding: 2px 0;">68.8% ≥2.0</div>
+                            </div>
+                            <div style="font-size: 0.85em; color: rgba(255, 255, 255, 0.7); line-height: 1.5;">
+                                • Grades ≥2.0: 68.8%<br>
+                                • Grades <2.0: 31.2%<br>
+                                • Challenging Courses: EENG571 (1.68), EENG561 (1.79)<br>
+                                • Status: Best performing BT program
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BACCII Programs Breakdown -->
+            <div style="margin-bottom: 40px;">
+                <h4 style="color: #4caf50; margin-bottom: 20px;">🎓 BACCII Programs Performance (Top 5 by Enrollment)</h4>
+                <div class="demo-grid">
+                    <!-- BACCII MENG -->
+                    <div class="demo-card">
+                        <h5 style="color: #4caf50; margin-bottom: 15px;">MENG - Mechanical Engineering</h5>
+                        <div style="margin-bottom: 15px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span style="color: #b8b8d1;">Total Students: <strong>1,360</strong></span>
+                                <span style="color: #ff9800;">Avg GPA: <strong>1.85</strong></span>
+                            </div>
+                            <div class="demo-bar" style="margin-bottom: 10px;">
+                                <div class="demo-fill" style="width: 50.5%; background: linear-gradient(90deg, #ff9800, #ffc107); text-align: center; padding: 2px 0;">50.5% ≥2.0</div>
+                            </div>
+                            <div style="font-size: 0.85em; color: rgba(255, 255, 255, 0.7); line-height: 1.5;">
+                                • Grades ≥2.0: 50.5%<br>
+                                • Grades <2.0: 49.5%<br>
+                                • Strong Courses: COMM205, CSCI200, POLS205<br>
+                                • Performance Gap vs BT: +0.80 GPA
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BACCII CENG -->
+                    <div class="demo-card">
+                        <h5 style="color: #4caf50; margin-bottom: 15px;">CENG - Civil Engineering</h5>
+                        <div style="margin-bottom: 15px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span style="color: #b8b8d1;">Total Students: <strong>1,198</strong></span>
+                                <span style="color: #4caf50;">Avg GPA: <strong>2.24</strong></span>
+                            </div>
+                            <div class="demo-bar" style="margin-bottom: 10px;">
+                                <div class="demo-fill" style="width: 61.7%; background: linear-gradient(90deg, #4caf50, #8bc34a); text-align: center; padding: 2px 0;">61.7% ≥2.0</div>
+                            </div>
+                            <div style="font-size: 0.85em; color: rgba(255, 255, 255, 0.7); line-height: 1.5;">
+                                • Grades ≥2.0: 61.7%<br>
+                                • Grades <2.0: 38.3%<br>
+                                • Strong Courses: COMM205, MENG225, POLS205<br>
+                                • Performance Gap vs BT: +0.90 GPA
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BACCII TENG -->
+                    <div class="demo-card">
+                        <h5 style="color: #4caf50; margin-bottom: 15px;">TENG - Telecommunications Engineering</h5>
+                        <div style="margin-bottom: 15px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span style="color: #b8b8d1;">Total Students: <strong>564</strong></span>
+                                <span style="color: #ff9800;">Avg GPA: <strong>1.79</strong></span>
+                            </div>
+                            <div class="demo-bar" style="margin-bottom: 10px;">
+                                <div class="demo-fill" style="width: 48.5%; background: linear-gradient(90deg, #ff9800, #ffc107); text-align: center; padding: 2px 0;">48.5% ≥2.0</div>
+                            </div>
+                            <div style="font-size: 0.85em; color: rgba(255, 255, 255, 0.7); line-height: 1.5;">
+                                • Grades ≥2.0: 48.5%<br>
+                                • Grades <2.0: 51.5%<br>
+                                • Strong Courses: BMED210, SSCI215, BECO210<br>
+                                • Performance Gap vs BT: +0.72 GPA
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BACCII EENG -->
+                    <div class="demo-card">
+                        <h5 style="color: #4caf50; margin-bottom: 15px;">EENG - Electrical Engineering</h5>
+                        <div style="margin-bottom: 15px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span style="color: #b8b8d1;">Total Students: <strong>525</strong></span>
+                                <span style="color: #ff9800;">Avg GPA: <strong>1.91</strong></span>
+                            </div>
+                            <div class="demo-bar" style="margin-bottom: 10px;">
+                                <div class="demo-fill" style="width: 52.1%; background: linear-gradient(90deg, #ff9800, #ffc107); text-align: center; padding: 2px 0;">52.1% ≥2.0</div>
+                            </div>
+                            <div style="font-size: 0.85em; color: rgba(255, 255, 255, 0.7); line-height: 1.5;">
+                                • Grades ≥2.0: 52.1%<br>
+                                • Grades <2.0: 47.9%<br>
+                                • Strong Courses: ARTS204, LANG225, SPAN200<br>
+                                • Performance Gap vs BT: +0.68 GPA
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BACCII BENG -->
+                    <div class="demo-card">
+                        <h5 style="color: #4caf50; margin-bottom: 15px;">BENG - Biomedical Engineering</h5>
+                        <div style="margin-bottom: 15px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span style="color: #b8b8d1;">Total Students: <strong>442</strong></span>
+                                <span style="color: #4caf50;">Avg GPA: <strong>2.11</strong></span>
+                            </div>
+                            <div class="demo-bar" style="margin-bottom: 10px;">
+                                <div class="demo-fill" style="width: 58.5%; background: linear-gradient(90deg, #ff9800, #4caf50); text-align: center; padding: 2px 0;">58.5% ≥2.0</div>
+                            </div>
+                            <div style="font-size: 0.85em; color: rgba(255, 255, 255, 0.7); line-height: 1.5;">
+                                • Grades ≥2.0: 58.5%<br>
+                                • Grades <2.0: 41.5%<br>
+                                • Strong Courses: SSCI200, COMM200, ARTS204<br>
+                                • Strong performance in humanities courses
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Insights from Real Data -->
+            <div style="background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 15px; margin-top: 30px;">
+                <h4 style="color: #ffd93d; margin-bottom: 15px;">📈 Key Insights from Spring 2024-2025 Data</h4>
+                <div style="color: rgba(255, 255, 255, 0.9); line-height: 1.8;">
+                    <p style="margin-bottom: 15px;">
+                        <strong style="color: #ff6b6b;">BT Programs Critical Findings:</strong><br>
+                        • MEENG (Mechatronics) is the only BT program with >50% students achieving grades ≥2.0 (68.8%)<br>
+                        • MENG and TENG show the lowest GPAs (1.05 and 1.07 respectively) - critical intervention needed<br>
+                        • Common struggling courses across BT: CHEM160, ENGL101, ENGL051 (foundational courses)<br>
+                        • Overall BT average: Only 32.4% of students achieve grades ≥2.0
+                    </p>
+                    <p style="margin-bottom: 15px;">
+                        <strong style="color: #4caf50;">BACCII Programs Performance:</strong><br>
+                        • CENG (Civil) leads with 2.24 average GPA and 61.7% students ≥2.0<br>
+                        • BENG (Biomedical) shows strong performance at 2.11 GPA<br>
+                        • TENG struggles most among BACCII programs (1.79 GPA) but still outperforms BT counterpart<br>
+                        • BACCII students perform better in humanities/elective courses
+                    </p>
+                    <p style="margin-bottom: 15px;">
+                        <strong style="color: #ffd93d;">Performance Gap Analysis:</strong><br>
+                        • Average GPA gap between BACCII and BT: +0.74 points<br>
+                        • Largest gap in CENG: BACCII (2.24) vs BT (1.34) = 0.90 points<br>
+                        • Smallest gap in MEENG: BT actually performs well (2.36 GPA)<br>
+                        • Foundation courses (Chemistry, English) are major failure points for BT students
+                    </p>
+                    <p>
+                        <strong style="color: #ffd93d;">Recommended Actions Based on Data:</strong><br>
+                        • Implement mandatory foundation course preparation for BT students before enrollment<br>
+                        • Create specialized English language support for BT students (ENGL051/101 failure rates)<br>
+                        • Develop bridge programs for Chemistry and basic sciences<br>
+                        • Replicate MEENG BT program success factors for other BT majors<br>
+                        • Consider admission criteria review for BT programs with <30% success rates
+                    </p>
+                </div>
+            </div>
+
+            <!-- BT and BACCII Performance in SoAS Courses -->
+            <div style="background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 15px; margin-top: 30px;">
+                <h4 style="color: #667eea; margin-bottom: 20px;">🏫 BT & BACCII SoEN Students Performance in SoAS Courses</h4>
+                
+                <!-- Overall Comparison -->
+                <div style="margin-bottom: 25px;">
+                    <h5 style="color: #ffd93d; margin-bottom: 15px;">Overall SoAS Performance Comparison</h5>
+                    <div class="demo-grid">
+                        <div class="demo-card">
+                            <h6 style="color: #ff6b6b; margin-bottom: 10px;">BT Students in SoAS</h6>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span style="color: #b8b8d1;">Total Students: <strong>582</strong></span>
+                                <span style="color: #ff6b6b;">Avg Grade: <strong>1.30</strong></span>
+                            </div>
+                            <div class="demo-bar" style="margin-bottom: 10px;">
+                                <div class="demo-fill" style="width: 34.5%; background: linear-gradient(90deg, #ff6b6b, #ff9800); text-align: center; padding: 2px 0;">34.5% ≥2.0</div>
+                            </div>
+                            <div style="font-size: 0.85em; color: rgba(255, 255, 255, 0.7);">
+                                • Total Enrollments: 2,580<br>
+                                • Critical performance in liberal arts<br>
+                                • Significant struggles in foundation courses
+                            </div>
+                        </div>
+
+                        <div class="demo-card">
+                            <h6 style="color: #4caf50; margin-bottom: 10px;">BACCII Students in SoAS</h6>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span style="color: #b8b8d1;">Total Students: <strong>5,296</strong></span>
+                                <span style="color: #ff9800;">Avg Grade: <strong>2.06</strong></span>
+                            </div>
+                            <div class="demo-bar" style="margin-bottom: 10px;">
+                                <div class="demo-fill" style="width: 57.0%; background: linear-gradient(90deg, #ff9800, #4caf50); text-align: center; padding: 2px 0;">57.0% ≥2.0</div>
+                            </div>
+                            <div style="font-size: 0.85em; color: rgba(255, 255, 255, 0.7);">
+                                • Total Enrollments: 26,477<br>
+                                • Better adaptation to liberal arts<br>
+                                • Performance gap: +0.76 grade points vs BT
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Breakdown by School -->
+                <div style="margin-bottom: 20px;">
+                    <h5 style="color: #ffd93d; margin-bottom: 15px;">Performance Breakdown by School</h5>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                        <!-- SoAS Performance -->
+                        <div style="background: rgba(255, 255, 255, 0.03); padding: 15px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <h6 style="color: #667eea; margin-bottom: 10px;">School of Arts & Sciences (SoAS)</h6>
+                            <div style="font-size: 0.85em; color: rgba(255, 255, 255, 0.8);">
+                                <div style="margin-bottom: 8px;">
+                                    <strong style="color: #ff6b6b;">BT:</strong> 346 students • 0.60 avg grade • 14.3% ≥2.0
+                                </div>
+                                <div style="margin-bottom: 8px;">
+                                    <strong style="color: #4caf50;">BACCII:</strong> 2,599 students • 1.62 avg grade • 41.9% ≥2.0
+                                </div>
+                                <div style="color: #ffd93d; font-size: 0.9em;">
+                                    Gap: +1.02 grade points, +27.6% pass rate
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SoED Performance -->
+                        <div style="background: rgba(255, 255, 255, 0.03); padding: 15px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <h6 style="color: #667eea; margin-bottom: 10px;">School of Education (SoED)</h6>
+                            <div style="font-size: 0.85em; color: rgba(255, 255, 255, 0.8);">
+                                <div style="margin-bottom: 8px;">
+                                    <strong style="color: #ff6b6b;">BT:</strong> 259 students • 1.03 avg grade • 27.5% ≥2.0
+                                </div>
+                                <div style="margin-bottom: 8px;">
+                                    <strong style="color: #4caf50;">BACCII:</strong> 2,166 students • 1.79 avg grade • 50.9% ≥2.0
+                                </div>
+                                <div style="color: #ffd93d; font-size: 0.9em;">
+                                    Gap: +0.76 grade points, +23.4% pass rate
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SoBU Performance -->
+                        <div style="background: rgba(255, 255, 255, 0.03); padding: 15px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <h6 style="color: #667eea; margin-bottom: 10px;">School of Business (SoBU)</h6>
+                            <div style="font-size: 0.85em; color: rgba(255, 255, 255, 0.8);">
+                                <div style="margin-bottom: 8px;">
+                                    <strong style="color: #ff6b6b;">BT:</strong> 6 students • 1.65 avg grade • 50.0% ≥2.0
+                                </div>
+                                <div style="margin-bottom: 8px;">
+                                    <strong style="color: #4caf50;">BACCII:</strong> 53 students • 2.99 avg grade • 81.0% ≥2.0
+                                </div>
+                                <div style="color: #ffd93d; font-size: 0.9em;">
+                                    Gap: +1.34 grade points, +31.0% pass rate
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SoEN Cross-enrollment -->
+                        <div style="background: rgba(255, 255, 255, 0.03); padding: 15px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                            <h6 style="color: #667eea; margin-bottom: 10px;">SoEN Cross-enrollment</h6>
+                            <div style="font-size: 0.85em; color: rgba(255, 255, 255, 0.8);">
+                                <div style="margin-bottom: 8px;">
+                                    <strong style="color: #ff6b6b;">BT:</strong> 472 students • 1.71 avg grade • 46.1% ≥2.0
+                                </div>
+                                <div style="margin-bottom: 8px;">
+                                    <strong style="color: #4caf50;">BACCII:</strong> 4,737 students • 2.24 avg grade • 62.9% ≥2.0
+                                </div>
+                                <div style="color: #ffd93d; font-size: 0.9em;">
+                                    Gap: +0.53 grade points, +16.8% pass rate
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Observations -->
+                <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 15px; margin-top: 20px;">
+                    <h5 style="color: #ffd93d; margin-bottom: 10px;">Key Observations</h5>
+                    <div style="font-size: 0.9em; color: rgba(255, 255, 255, 0.9); line-height: 1.6;">
+                        • <strong>Largest performance gap in SoBU:</strong> BACCII students outperform BT by 1.34 grade points in business courses<br>
+                        • <strong>Critical SoAS performance:</strong> BT students achieve only 14.3% pass rate in Arts & Sciences courses<br>
+                        • <strong>SoED challenges:</strong> Both groups struggle, but BT significantly more (1.03 vs 1.79 avg grade)<br>
+                        • <strong>Cross-enrollment pattern:</strong> Even within SoEN courses, BACCII students maintain advantage (+0.53 grade points)<br>
+                        • <strong>Systemic issue:</strong> BT students consistently underperform across ALL schools, indicating need for comprehensive support
+                    </div>
+                </div>
             </div>
         </div>
     </div>
